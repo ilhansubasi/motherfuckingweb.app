@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Get My Location</title>
+		<!-- This web site was made by https://github.com/ilhansubasi -->
+	</head>
+	<body>
+		<h1>Get My Location</h1>
+		<button onClick="getLocation()">Get my location</button>
+		<p id="coordinates"></p>
+		<script>
+			var coordinatesPargaph = document.getElementById("coordinates");
+
+			function getLocation() {
+				if(navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				}
+				else {
+					coordinatesPargaph.innerHTML = "Geolocation is not supported by your browser.";
+				}
+			}
+
+			function showPosition(position) {
+				coordinatesPargaph.innerHTML = "Latitude: " + position.coords.latitude + "<br>"
+											+ "Longitude: " + position.coords.longitude + "<br>"
+											 + "Accuracy: " + position.coords.accuracy + " meters";
+			}
+		</script>
+	</body>
+</html>
